@@ -146,7 +146,7 @@ if (empty($SBCODES)) {
     $pres = sqlStatement("SELECT option_id, title FROM list_options " .
             "WHERE list_id = 'superbill' ORDER BY seq");
     while ($prow = sqlFetchArray($pres)) {
-        $SBCODES[] = '*G|' . $prow['title'];
+        $SBCODES[] = '*G|' .xl_list_label ($prow['title']);
         $res = sqlStatement("SELECT code_type, code, code_text FROM codes " .
                 "WHERE superbill = '" . $prow['option_id'] . "' AND active = 1 " .
                 "ORDER BY code_text");
@@ -220,6 +220,7 @@ border-width: 0 0 1px 1px;
 border-spacing: 0;
 border-collapse: collapse;
 border-color: #999999;
+page-break-after:always;
 }
 td.toprow {
 height: 1px;
@@ -340,7 +341,6 @@ foreach ($pid_list as $pid) {
     $cindex = 0;
 
     while (--$pages >= 0) {
-		$html .='<div style="page-break-before: always">Be Nice To Sick People</div>';
         $html .= genFacilityTitle(xl('Superbill/Fee Sheet'), -1);
 
         $html .="
@@ -371,14 +371,15 @@ foreach ($pid_list as $pid) {
 
             $html .= "</td>
 <td valign='top' class='fshead'>";
-            $html .= xl('DOB:     ', 'r');
+            $html .= xl('DOB', 'r');
+            $html .= ":     ";
           
 
             if ($form_fill)
                 $html .= $patdata['DOB'];
 $html .= "<br />";
-            $html .= xl('ID:     ', 'r');
-            
+            $html .= xl('ID', 'r');
+            $html .= ":     ";
 
             if ($form_fill)
                 $html .= $patdata['pubpid'];
