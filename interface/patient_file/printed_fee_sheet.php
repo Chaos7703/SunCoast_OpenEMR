@@ -372,14 +372,14 @@ foreach ($pid_list as $pid) {
             $html .= "</td>
 <td valign='top' class='fshead'>";
             $html .= xl('DOB', 'r');
-            $html .= ":     ";
+            $html .= ":&nbsp;&nbsp;&nbsp;&nbsp;";
           
 
             if ($form_fill)
                 $html .= $patdata['DOB'];
 $html .= "<br />";
             $html .= xl('ID', 'r');
-            $html .= ":     ";
+            $html .= ":&nbsp;&nbsp;&nbsp;&nbsp;";
 
             if ($form_fill)
                 $html .= $patdata['pubpid'];
